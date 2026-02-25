@@ -1,0 +1,12 @@
+# GitHub Linguist: Override language detection
+# Mark package-lock as generated (not counted in language stats)
+ecommerce-manager/package-lock.json linguist-generated=true
+
+# Mark frontend as documentation/vendored so Java dominates
+ecommerce-manager/** linguist-vendored=true
+
+# Ensure Java is properly detected
+ecommerce-backend-project/src/**/*.java linguist-language=Java
+
+# Mark SQL dumps as generated
+*.sql linguist-generated=true

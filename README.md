@@ -205,7 +205,10 @@ java_da/
 ├── ServerAI/                      # 🤖 AI Chatbot Server (Flask)
 │   └── main.py                    # Gemini AI integration
 │
-├── ecommerce_db.sql               # 💾 Database SQL dump
+├── database/                      # 💾 Database
+│   └── ecommerce_db.sql           # SQL dump (dữ liệu mẫu)
+│
+├── screenshots/                   # 📸 Screenshots
 └── README.md                      # 📄 Tài liệu này
 ```
 
@@ -238,7 +241,7 @@ cd java
 mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS ecommerce_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
 # Import dữ liệu mẫu
-mysql -u root -p ecommerce_db < ecommerce_db.sql
+mysql -u root -p ecommerce_db < database/ecommerce_db.sql
 ```
 
 > **Lưu ý:** Nếu bạn không import file SQL, khi chạy backend với profile `dev`, hệ thống sẽ tự động tạo bảng và seed dữ liệu mẫu.

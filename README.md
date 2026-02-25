@@ -345,18 +345,9 @@ mvn test jacoco:report
 
 ## 📸 Screenshots
 
-> _Thêm screenshots của ứng dụng vào đây để nhà tuyển dụng dễ hình dung._
+### 🏠 Trang chủ (Homepage)
 
-<!-- Uncomment và thay đường dẫn khi có screenshots:
-### Trang chủ
-![Home Page](screenshots/home.png)
-
-### Admin Dashboard
-![Dashboard](screenshots/dashboard.png)
-
-### AI Chatbot
-![Chatbot](screenshots/chatbot.png)
--->
+![Trang chủ ICREAM](screenshots/homepage.png)
 
 ---
 

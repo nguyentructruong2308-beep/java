@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật trạng thái hoàn tiền</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #f8f9fa; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; border-bottom: 3px solid #28a745; }
+        .content { padding: 30px; border: 1px solid #dee2e6; border-top: none; border-radius: 0 0 8px 8px; }
+        .footer { text-align: center; margin-top: 20px; font-size: 0.8em; color: #6c757d; }
+        .status { font-weight: bold; text-transform: uppercase; padding: 5px 10px; border-radius: 4px; }
+        .status-completed { color: #28a745; background: #d4edda; }
+        .status-rejected { color: #dc3545; background: #f8d7da; }
+        .notes { background: #f1f3f5; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #adb5bd; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cập nhật trạng thái hoàn tiền</h1>
+    </div>
+    <div class="content">
+        <p>Xin chào <strong th:text="${user.fullName}">Khách hàng</strong>,</p>
+        <p>Chúng tôi xin thông báo về việc cập nhật trạng thái cho yêu cầu hoàn tiền <strong th:text="'#' + ${refund.id}">#123</strong> của bạn.</p>
+        
+        <p>Trạng thái hiện tại: 
+            <span th:classappend="${refund.status.name() == 'COMPLETED' ? 'status status-completed' : (refund.status.name() == 'REJECTED' ? 'status status-rejected' : 'status')}"
+                  th:text="${refund.status}">STATUS</span>
+        </p>
+
+        <div class="notes" th:if="${refund.adminNotes != null}">
+            <strong>Ghi chú từ quản trị viên:</strong><br/>
+            <span th:text="${refund.adminNotes}">Ghi chú...</span>
+        </div>
+
+        <p th:if="${refund.status.name() == 'COMPLETED'}">Số tiền hoàn <strong th:text="${refund.totalRefundAmount} + 'đ'">0đ</strong> sẽ được chuyển về phương thức thanh toán ban đầu của bạn trong một vài ngày tới tùy thuộc vào ngân hàng.</p>
+        
+        <p>Cảm ơn bạn đã tin tưởng sử dụng dịch vụ của chúng tôi.</p>
+        
+        <p>Trân trọng,<br/><strong>Ecommerce Store Team</strong></p>
+    </div>
+    <div class="footer">
+        &copy; 2026 Ecommerce Store. All rights reserved.
+    </div>
+</body>
+</html>

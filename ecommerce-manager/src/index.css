@@ -1,0 +1,410 @@
+:root {
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Đổi chữ sang màu xám đậm để đọc được trên nền sáng */
+  color: #2c3e50;
+  /* Fallback color */
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- PHẦN QUAN TRỌNG: BACKGROUND ĐỘNG --- */
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* Quan trọng: Đổi display từ flex sang block để web không bị ép vào giữa */
+  display: block;
+
+  /* Gradient màu: Hồng dâu - Vàng kem - Xanh bạc hà - Tím khoai môn */
+  background: linear-gradient(-45deg,
+      #ff9a9e,
+      #fad0c4,
+      #fff1eb,
+      #ace0f9,
+      #c1dfc4);
+  background-size: 400% 400%;
+  animation: sweetGradient 12s ease infinite;
+}
+
+/* Keyframes cho chuyển động */
+@keyframes sweetGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+a {
+  font-weight: 500;
+  color: #d63384;
+  /* Link màu hồng đậm */
+  text-decoration: inherit;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #a61e4d;
+}
+
+/* Chỉnh nút bấm bo tròn dễ thương hơn */
+button {
+  border-radius: 50px;
+  /* Bo tròn kiểu viên kẹo */
+  border: 1px solid transparent;
+  padding: 0.6em 1.5em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: white;
+  color: #ff6b6b;
+  /* Chữ màu cam đào */
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Đổ bóng nhẹ */
+  transition: all 0.25s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  /* Nút bay lên nhẹ khi di chuột */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto #ff9a9e;
+}
+
+/* --- 1. HIỆU ỨNG HEADER KÍNH MỜ (GLASSMORPHISM) --- */
+/* Gắn class này cho Header để nó trong suốt nhìn xuyên thấu */
+.glass-header {
+  background: rgba(255, 255, 255, 0.8) !important;
+  /* Màu trắng trong suốt */
+  backdrop-filter: blur(10px);
+  /* Làm mờ nền đằng sau */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  position: sticky;
+  /* Dính chặt lên trên cùng */
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* --- 2. HIỆU ỨNG CARD SẢN PHẨM (Ngon mắt hơn) --- */
+.product-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Hiệu ứng nảy lò xo */
+  border: none !important;
+  background: white;
+  border-radius: 20px !important;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  /* Bay lên và to ra chút xíu */
+  box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+  /* Đổ bóng màu hồng */
+}
+
+/* Hiệu ứng cho nút Mua hàng khi hover vào card */
+.product-card .btn-add-cart {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .btn-add-cart {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 3. BANNER TEXT NỔI BẬT --- */
+.hero-text {
+  text-shadow:
+    2px 2px 0px white,
+    4px 4px 0px rgba(255, 154, 158, 0.5);
+  font-weight: 900 !important;
+  letter-spacing: 2px;
+}
+
+/* --- 4. ANIMATION CHO LOGO XOAY --- */
+.logo-spin:hover {
+  animation: spin-slow 3s infinite linear;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- 5. CUSTOM TOASTIFY (GỌN GÀNG & ĐẸP) --- */
+.Toastify__toast-container--bottom-right {
+  bottom: 2em;
+  right: 2em;
+  width: 320px !important;
+}
+
+.Toastify__toast {
+  border-radius: 16px !important;
+  padding: 12px 16px !important;
+  min-height: 50px !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  color: #2c3e50 !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+.Toastify__toast--success {
+  border-left: 5px solid #2ecc71 !important;
+}
+
+.Toastify__toast--error {
+  border-left: 5px solid #e74c3c !important;
+}
+
+.Toastify__toast-body {
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+}
+
+/* Thanh tiến trình thanh mảnh hơn */
+.Toastify__progress-bar {
+  height: 2px !important;
+  bottom: 0 !important;
+}
+
+.Toastify__toast-icon {
+  width: 20px !important;
+  margin-right: 12px !important;
+}
+
+.Toastify__close-button {
+  align-self: center !important;
+}
+
+/* --- 6. LUXURY PASTEL GLASS SWEETALERT2 STYLES --- */
+.premium-swal-popup {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(35px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
+  border-radius: 40px !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 40px 100px rgba(255, 154, 158, 0.2),
+    0 20px 40px rgba(0, 0, 0, 0.05) !important;
+  padding: 3.5rem 2rem !important;
+}
+
+.premium-swal-title {
+  color: #334155 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 2rem !important;
+  margin-bottom: 0.8rem !important;
+  letter-spacing: -0.5px !important;
+}
+
+.premium-swal-html {
+  color: #64748b !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 1.1rem !important;
+  line-height: 1.6 !important;
+}
+
+.premium-swal-confirm {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 1.2rem 3rem !important;
+  font-weight: 800 !important;
+  color: white !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  box-shadow: 0 15px 30px rgba(255, 154, 158, 0.4) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  margin: 0 15px !important;
+}
+
+.premium-swal-confirm:hover {
+  transform: translateY(-5px) scale(1.05) !important;
+  box-shadow: 0 20px 40px rgba(255, 154, 158, 0.6) !important;
+}
+
+.premium-swal-confirm-success {
+  background: linear-gradient(135deg, #2ecc71 0%, #a8e063 100%) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 1rem 2.5rem !important;
+  font-weight: 800 !important;
+  color: white !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.premium-swal-confirm-error {
+  background: linear-gradient(135deg, #e74c3c 0%, #ff6b6b 100%) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 1rem 2.5rem !important;
+  font-weight: 800 !important;
+  color: white !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.premium-swal-cancel {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: #64748b !important;
+  border-radius: 50px !important;
+  padding: 1.2rem 3rem !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s !important;
+  margin: 0 15px !important;
+}
+
+.premium-swal-cancel:hover {
+  background: white !important;
+  color: #334155 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+.premium-swal-icon {
+  border: none !important;
+  transform: scale(1.5) !important;
+  margin-bottom: 2.5rem !important;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.premium-swal-container {
+  z-index: 999999 !important;
+  /* Đảm bảo cao nhất hệ thống */
+}
+
+/* Animations (Enhanced with bounce) */
+@keyframes luxuryFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.8) rotate(-2deg);
+  }
+
+  60% {
+    transform: translateY(-10px) scale(1.02) rotate(1deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+@keyframes luxuryFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+}
+
+.luxury-animate-in {
+  animation: luxuryFadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.luxury-animate-out {
+  animation: luxuryFadeOut 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Premium Toast Refined */
+.premium-toast-popup {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: 25px !important;
+  box-shadow: 0 20px 40px rgba(255, 154, 158, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  padding: 1.2rem !important;
+}
+
+/* --- 7. ADMIN UI ENHANCEMENTS --- */
+.bg-light-primary {
+  background-color: rgba(13, 110, 253, 0.05) !important;
+  transition: background-color 0.2s ease;
+}
+
+.table-hover tbody tr:hover.bg-light-primary {
+  background-color: rgba(13, 110, 253, 0.1) !important;
+}
+
+/* --- 8. VOUCHER PAGE STYLES --- */
+.voucher-card {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.voucher-card:hover {
+  transform: translateY(-5px);
+}
+
+.voucher-edge-left,
+.voucher-edge-right {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #f8f9fa;
+  /* Match typical page background, adjust if needed */
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.voucher-edge-left {
+  left: -10px;
+}
+
+.voucher-edge-right {
+  right: -10px;
+}
+
+/* Utility */
+.grayscale {
+  filter: grayscale(100%);
+  pointer-events: none;
+  /* Prevent clicking */
+}

@@ -1,0 +1,197 @@
+/* =========================================
+   PREMIUM USER PROFILE PRO UI - GLASSMORPHISM
+   ========================================= */
+
+.profile-page-wrapper {
+  background: linear-gradient(135deg, #fff0f3 0%, #fff7e6 50%, #e6f7ff 100%);
+  min-height: calc(100vh - 80px); /* Trừ header */
+  padding-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decorations */
+.profile-page-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(255,107,107,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  animation: floatOrb 10s infinite ease-in-out;
+}
+
+.profile-page-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(72,219,251,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  animation: floatOrb 12s infinite ease-in-out reverse;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* SIDEBAR CARD */
+.profile-sidebar-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  padding: 1.5rem;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.profile-sidebar-card:hover {
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.1);
+}
+
+/* USER SHORT INFO IN SIDEBAR */
+.user-info-widget {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.user-avatar-large {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  margin: 0 auto 1rem;
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.25);
+  position: relative;
+}
+
+.user-avatar-large::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* NAVIGATION ITEMS */
+.profile-nav-item .nav-link {
+  color: #555;
+  font-weight: 600;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid transparent;
+}
+
+.profile-nav-item .nav-link:hover {
+  background: rgba(255, 255, 255, 0.6);
+  color: #ff6b6b;
+  transform: translateX(5px);
+}
+
+.profile-nav-item .nav-link.active {
+  background: linear-gradient(45deg, #ff9a9e, #fecfef);
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(255, 107, 107, 0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.profile-nav-item .nav-link svg {
+  width: 20px;
+  transition: 0.3s;
+}
+
+.profile-nav-item .nav-link.active svg {
+  transform: scale(1.1);
+}
+
+/* CONTENT AREA */
+.profile-content-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+  min-height: 500px;
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER FOR CONTENT SECTIONS */
+.profile-section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.profile-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #ff9a9e);
+  border-radius: 2px;
+}
+
+/* FORM CONTROLS overrides for glass feel */
+.profile-content-card .form-control {
+  background: rgba(248, 249, 250, 0.7);
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  transition: 0.3s;
+}
+
+.profile-content-card .form-control:focus {
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+  border-color: #ff9a9e;
+}
+
+.profile-content-card .btn-primary {
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  transition: 0.3s;
+}
+
+.profile-content-card .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}

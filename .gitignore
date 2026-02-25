@@ -1,0 +1,32 @@
+# ===== Java (Backend) =====
+ecommerce-backend-project/target/
+ecommerce-backend-project/.mvn/wrapper/maven-wrapper.jar
+ecommerce-backend-project/uploads/
+*.class
+*.jar
+*.war
+*.log
+
+# ===== Node.js (Frontend) =====
+ecommerce-manager/node_modules/
+ecommerce-manager/dist/
+
+# ===== Python (AI Server) =====
+ServerAI/__pycache__/
+ServerAI/*.log
+*.pyc
+
+# ===== IDE =====
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Nested duplicate folder =====
+java_da/

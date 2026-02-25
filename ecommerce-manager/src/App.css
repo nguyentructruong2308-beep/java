@@ -1,0 +1,113 @@
+/* 1. Thiết lập cho thẻ body để nền full màn hình */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  
+  /* Màu nền động: Hồng phấn -> Vàng nhạt -> Xanh mint -> Tím mộng mơ */
+  background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fff4d2, #d4fc79, #e0c3fc);
+  background-size: 400% 400%; /* Phóng to background để di chuyển */
+  animation: iceCreamFlow 15s ease infinite; /* Hiệu ứng chuyển động trong 15s */
+}
+
+/* 2. Định nghĩa chuyển động (Keyframes) */
+@keyframes iceCreamFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 3. Cập nhật lại #root để nội dung không bị bó hẹp */
+#root {
+  width: 100%;
+  margin: 0 auto;
+  /* Xóa max-width cũ đi nếu muốn web tràn màn hình kiểu e-commerce */
+  /* max-width: 1280px; */ 
+}
+
+/* --- Các class cũ của bạn (giữ lại nếu cần dùng logo xoay) --- */
+/* Nếu không dùng logo React xoay nữa thì có thể xóa đoạn dưới này đi */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+/* --- 1. HIỆU ỨNG HEADER KÍNH MỜ (GLASSMORPHISM) --- */
+/* Gắn class này cho Header để nó trong suốt nhìn xuyên thấu */
+.glass-header {
+  background: rgba(255, 255, 255, 0.8) !important; /* Màu trắng trong suốt */
+  backdrop-filter: blur(10px); /* Làm mờ nền đằng sau */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  position: sticky; /* Dính chặt lên trên cùng */
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* --- 2. HIỆU ỨNG CARD SẢN PHẨM (Ngon mắt hơn) --- */
+.product-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Hiệu ứng nảy lò xo */
+  border: none !important;
+  background: white;
+  border-radius: 20px !important;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02); /* Bay lên và to ra chút xíu */
+  box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2); /* Đổ bóng màu hồng */
+}
+
+/* Hiệu ứng cho nút Mua hàng khi hover vào card */
+.product-card .btn-add-cart {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .btn-add-cart {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 3. BANNER TEXT NỔI BẬT --- */
+.hero-text {
+  text-shadow: 2px 2px 0px white, 4px 4px 0px rgba(255, 154, 158, 0.5);
+  font-weight: 900 !important;
+  letter-spacing: 2px;
+}
+
+/* --- 4. ANIMATION CHO LOGO XOAY --- */
+.logo-spin:hover {
+    animation: spin-slow 3s infinite linear;
+}
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+

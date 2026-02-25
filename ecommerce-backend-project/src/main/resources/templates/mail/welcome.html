@@ -1,0 +1,72 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #eee;
+        border-radius: 10px;
+      }
+      .header {
+        background-color: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+      }
+      .content {
+        padding: 20px;
+      }
+      .footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 12px;
+        color: #777;
+      }
+      .button {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 style="color: #28a745">Mừng bạn gia nhập!</h1>
+      </div>
+      <div class="content">
+        <p>Xin chào <strong th:text="${user.fullName}"></strong>,</p>
+        <p>
+          Chào mừng bạn đã trở thành thành viên của
+          <strong>Ecommerce Store</strong>. Chúng tôi rất vui mừng khi có bạn
+          đồng hành.
+        </p>
+        <p>Tài khoản của bạn đã được kích hoạt và sẵn sàng để sử dụng.</p>
+        <div style="text-align: center; margin: 30px 0">
+          <a href="http://localhost:5173/login" class="button"
+            >Bắt đầu mua sắm ngay</a
+          >
+        </div>
+        <p>
+          Nếu bạn có bất kỳ câu hỏi nào, đừng ngần ngại phản hồi lại email này.
+        </p>
+        <p>Trân trọng,<br />Đội ngũ Ecommerce Store</p>
+      </div>
+      <div class="footer">
+        &copy; 2026 Ecommerce Store. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>

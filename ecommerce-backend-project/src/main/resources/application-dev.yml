@@ -1,0 +1,80 @@
+server:
+  port: 8081
+
+app:
+  frontend-url: "http://localhost:5173"
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update # Tự tạo bảng nếu chưa có
+    show-sql: true
+    properties:
+      hibernate:
+        "[format_sql]": true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  # ==========================================================
+  # == CẤU HÌNH GỬI MAIL (GMAIL SMTP)
+  # ==========================================================
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "nguyentruong23082005@gmail.com"
+    password: "ewzajrqszrwltbfd"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# ==========================================================
+# == FILE UPLOAD
+# ==========================================================
+file:
+  upload-dir: "./uploads"
+
+# ==========================================================
+# == JWT
+# ==========================================================
+jwt:
+  secret: "VGhpc0lzTXlTdXBlckxvbmdBbmRTZWN1cmVTZWNyZXRLZXlGb3JFY29tbWVyY2VQcm9qZWN0MjAyNQ=="
+  expiration: 86400000
+
+# ==========================================================
+# == LOGGING
+# ==========================================================
+logging:
+  level:
+    "[com.nhom25.ecommerce]": DEBUG
+    "[org.springframework.security]": DEBUG
+    "[org.springframework.web]": DEBUG
+    "[org.hibernate.SQL]": DEBUG
+
+# ==========================================================
+# == VNPAY
+# ==========================================================
+vnpay:
+  tmnCode: "2QXC69SS"
+  hashSecret: "MSB0GTCXU18XUP6CHM36L6G6CHM36L6G"
+  url: "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"
+  returnUrlBase: "https://incompatibly-partakable-ileana.ngrok-free.dev/api/payments/vnpay_return"
+  ipnUrlBase: "https://incompatibly-partakable-ileana.ngrok-free.dev/api/payments/vnpay_ipn"
+
+# ==========================================================
+# == MOMO (SANDBOX)
+# ==========================================================
+momo:
+  partnerCode: "MOMO"
+  accessKey: "F8BBA842ECF85"
+  secretKey: "K951B6PE1waDMi640xX08PD3vg6EkVlz"
+  apiUrl: "https://test-payment.momo.vn/v2/gateway/api/create"
+  returnUrl: "https://incompatibly-partakable-ileana.ngrok-free.dev/api/payments/momo_return"
+  notifyUrl: "https://incompatibly-partakable-ileana.ngrok-free.dev/api/payments/momo_ipn"
